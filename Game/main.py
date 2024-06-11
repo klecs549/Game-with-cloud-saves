@@ -57,20 +57,23 @@ def prepare():
                 {"Sword": 0, "Hammer": 0, "Dash": 0},
                 {"GiantFrog": 0, "GiantRacoon": 0, "GiantRacoonGold": 0}]
         elif option == "Cloud save":
-            r = requests.get("http://127.0.0.1:8000/save/get-save/")
-            saves = []
-            id = 1
-            for data in r.json()[::-1]:
-                if data["user"] == 1:
-                    print(id, data["data"])
-                    saves.append(data["data"])
-                    id += 1
-            while True:
-                option = input("Choose a save: ")
-                try:
-                    return saves[int(option) - 1]
-                except IndexError:
-                    print("Invalid save")
+            try:
+                r = requests.get("http://127.0.0.1:8000/save/get-save/")
+                saves = []
+                id = 1
+                for data in r.json()[::-1]:
+                    if data["user"] == 1:
+                        print(id, data["data"])
+                        saves.append(data["data"])
+                        id += 1
+                while True:
+                    option = input("Choose a save: ")
+                    try:
+                        return saves[int(option) - 1]
+                    except IndexError:
+                        print("Invalid save")
+            except ConnectionRefusedError:
+                print("Server not available")
         elif option == "Offline save":
             with open("save.json") as f:
                 try:

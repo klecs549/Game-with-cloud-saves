@@ -1,3 +1,0 @@
-Name example
-Password of
-save = dict() file
