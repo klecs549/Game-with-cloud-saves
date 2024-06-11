@@ -1,0 +1,1 @@
+It is a simple adventure game. The Game folder contains all the logic of the game, and the django_save folder contains the Django server used to move saves from users to the PostgreSQL database and backward.
