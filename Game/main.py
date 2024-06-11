@@ -73,7 +73,7 @@ def prepare():
                     except IndexError:
                         print("Invalid save")
             except ConnectionRefusedError:
-                print("Server not available")
+                print("Server unavailable")
         elif option == "Offline save":
             with open("save.json") as f:
                 try:
